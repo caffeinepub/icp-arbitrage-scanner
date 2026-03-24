@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --background: 0.085 0.022 232;
+    --foreground: 0.94 0.01 220;
+    --card: 0.13 0.028 232;
+    --card-foreground: 0.94 0.01 220;
+    --popover: 0.15 0.032 232;
+    --popover-foreground: 0.94 0.01 220;
+    --primary: 0.78 0.115 195;
+    --primary-foreground: 0.085 0.022 232;
+    --secondary: 0.18 0.03 232;
+    --secondary-foreground: 0.94 0.01 220;
+    --muted: 0.17 0.025 232;
+    --muted-foreground: 0.65 0.03 220;
+    --accent: 0.78 0.115 195;
+    --accent-foreground: 0.085 0.022 232;
+    --destructive: 0.64 0.22 20;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.2 0.03 232;
+    --input: 0.2 0.03 232;
+    --ring: 0.78 0.115 195;
+    --success: 0.73 0.17 145;
+    --success-bright: 0.84 0.19 155;
+    --chart-1: 0.78 0.115 195;
+    --chart-2: 0.73 0.17 145;
+    --chart-3: 0.64 0.22 20;
+    --chart-4: 0.84 0.19 155;
+    --chart-5: 0.68 0.14 300;
+    --sidebar: 0.11 0.025 232;
+    --sidebar-foreground: 0.94 0.01 220;
+    --sidebar-primary: 0.78 0.115 195;
+    --sidebar-primary-foreground: 0.085 0.022 232;
+    --sidebar-accent: 0.17 0.025 232;
+    --sidebar-accent-foreground: 0.94 0.01 220;
+    --sidebar-border: 0.2 0.03 232;
+    --sidebar-ring: 0.78 0.115 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      oklch(0.11 0.03 232) 0%,
+      oklch(0.07 0.018 232) 70%
+    );
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-cyan {
+    color: oklch(0.78 0.115 195);
+  }
+  .text-success {
+    color: oklch(0.73 0.17 145);
+  }
+  .text-success-bright {
+    color: oklch(0.84 0.19 155);
+  }
+  .text-danger {
+    color: oklch(0.64 0.22 20);
+  }
+  .bg-cyan {
+    background: oklch(0.78 0.115 195);
+  }
+  .border-success-bright {
+    border-color: oklch(0.84 0.19 155);
+  }
+  .glow-row {
+    box-shadow: 0 0 0 1px oklch(0.84 0.19 155 / 0.6), 0 2px 12px
+      oklch(0.84 0.19 155 / 0.08);
+    background: oklch(0.84 0.19 155 / 0.04);
+  }
+  .glow-cyan-btn {
+    background: linear-gradient(
+      135deg,
+      oklch(0.78 0.115 195),
+      oklch(0.82 0.12 195)
+    );
+    box-shadow: 0 0 16px oklch(0.78 0.115 195 / 0.35);
+  }
+  .glow-cyan-btn:hover {
+    box-shadow: 0 0 24px oklch(0.78 0.115 195 / 0.55);
+  }
+  .nav-active {
+    color: oklch(0.78 0.115 195);
+    position: relative;
+  }
+  .nav-active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: oklch(0.78 0.115 195);
+    box-shadow: 0 0 8px oklch(0.78 0.115 195 / 0.8);
+    border-radius: 2px;
+  }
+  .mono {
+    font-family: "Geist Mono", "JetBrains Mono", monospace;
+  }
+  .pill-btn {
+    background: oklch(0.17 0.025 232);
+    border: 1px solid oklch(0.22 0.03 232);
+    color: oklch(0.94 0.01 220);
+    border-radius: 9999px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .pill-btn:hover {
+    border-color: oklch(0.78 0.115 195 / 0.5);
+    color: oklch(0.78 0.115 195);
+  }
+  .exchange-chip {
+    border-radius: 9999px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid;
+  }
+  .exchange-chip.active {
+    border-color: oklch(0.78 0.115 195 / 0.6);
+    color: oklch(0.78 0.115 195);
+    background: oklch(0.78 0.115 195 / 0.12);
+  }
+  .exchange-chip.inactive {
+    border-color: oklch(0.25 0.025 232);
+    color: oklch(0.5 0.025 220);
+    background: transparent;
+  }
+  .vertical-pill {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(0.25 0.025 232);
+    border-radius: 2px;
+  }
+}
